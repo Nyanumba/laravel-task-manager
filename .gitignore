@@ -1,0 +1,53 @@
+# Laravel default ignores
+/vendor
+/node_modules
+/public/storage
+/public/hot
+/storage/*.key
+/bootstrap/cache/*
+
+# Environment files (VERY IMPORTANT - never commit these)
+.env
+.env.*
+!.env.example
+
+# Logs and cache
+/storage/logs
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+/storage/pail
+
+# Compiled assets (if you use Vite/Mix)
+public/build
+/public/mix-manifest.json
+
+# IDE / Editor files
+.idea
+.vscode
+*.sublime-*
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Testing
+.phpunit.result.cache
+phpunit.xml
+cypress
+
+# Local development tools
+Homestead.json
+Homestead.yaml
+Vagrantfile
+
+# NPM / Yarn debug logs
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+
+# Laravel specific temporary files
+auth.json
