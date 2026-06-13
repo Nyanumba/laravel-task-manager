@@ -62,29 +62,56 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-    {{-- ===================== NAVBAR ===================== --}}
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button">
-                    <i class="fas fa-bars"></i>
-                </a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{ route('tasks.index') }}" class="nav-link font-weight-bold text-primary">
-                    <i class="fas fa-tasks mr-1"></i> TaskManager
-                </a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <span class="nav-link text-muted small">
-                    <i class="far fa-clock mr-1"></i>
-                    {{ now()->format('D, d M Y') }}
+{{-- ===================== NAVBAR ===================== --}}
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+                <i class="fas fa-bars"></i>
+            </a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{ route('tasks.index') }}" class="nav-link font-weight-bold text-primary">
+                <i class="fas fa-tasks mr-1"></i> TaskFlow
+            </a>
+        </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <span class="nav-link text-muted small">
+                <i class="far fa-clock mr-1"></i>
+                {{ now()->format('D, d M Y') }}
+            </span>
+        </li>
+        {{-- User dropdown --}}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+               data-toggle="dropdown" style="gap:.5rem;">
+                <span class="d-inline-flex align-items-center justify-content-center bg-primary text-white rounded-circle"
+                      style="width:30px;height:30px;font-size:.8rem;font-weight:700;">
+                    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
                 </span>
-            </li>
-        </ul>
-    </nav>
+                <span class="d-none d-sm-inline small font-weight-bold text-dark">
+                    {{ Auth::user()->name }}
+                </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-item-text small text-muted">
+                    Signed in as<br>
+                    <strong>{{ Auth::user()->email }}</strong>
+                </div>
+                <div class="dropdown-divider"></div>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="dropdown-item text-danger">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Sign Out
+                    </button>
+                </form>
+            </div>
+        </li>
+    </ul>
+</nav>
 
     {{-- ===================== SIDEBAR ===================== --}}
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
